@@ -3,9 +3,18 @@ const firebaseDb = firebase.database();
 const fireRef = firebaseDb.ref('/BuddyDb');
 
 exports.list = function (req, res) {
-    fireRef.on('value', function(snapshot) {
-        res.status(200).json(snapshot.val());
-    });
+    const url = req.url;
+    console.log(url);
+    if(url.toString() == "/api/buddy/all") {
+        fireRef.once('value').then(function(snapshot) {
+            res.status(200).json(snapshot.val());
+        });
+        fireRef.on('child_added', function(snapshot) {
+            console.log(snapshot.val());
+        });
+    } else {
+        console.log("naa");
+    }
 };
 
 exports.create = function (req, res) {
