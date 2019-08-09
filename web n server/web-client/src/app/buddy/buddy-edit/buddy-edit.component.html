@@ -1,0 +1,43 @@
+<div class="form">
+    <h1>Add New Course</h1>
+    <form (ngSubmit)="editBuddy()" novalidate>
+        <div>
+            <label for="courseCode">Name</label>
+            <div>
+                <input type="text" required [(ngModel)]="buddy.name" name="courseCode" placeholder="Name" value="{{buddy.name}}">
+            </div>
+        </div>
+        <div>
+            <label for="courseName">Address</label>
+            <div>
+                <input type="text" required [(ngModel)]="buddy.address" name="courseName" placeholder="Address" value="{{buddy.address}}" />
+
+            </div>
+        </div>
+        <div>
+            <label for="section">Postal Code</label>
+            <div>
+                <input type="section" required [(ngModel)]="buddy.postal_code" name="section" placeholder="Postal Code" value="{{buddy.postal_code}}" />
+
+            </div>
+        </div>
+        <div>
+            <label for="phone">Phone</label>
+            <div>
+                <input type="semester" required [(ngModel)]="buddy.phone" name="semester" placeholder="Phone" value="{{buddy.phone}}" />
+
+            </div>
+        </div>
+        <div>
+            <label for="service-type">Service Type</label>
+            <div>
+                <input type="input" required [(ngModel)]="buddy.service_type" name="service-type" placeholder="Service Type" value="{{buddy.service_type}}" />
+
+            </div>
+        </div>
+        <div>
+            <input class="button button-block" type="submit" value="Update Buddy">
+        </div>
+        <strong id="error">{{errorMessage}}</strong>
+    </form>
+</div>

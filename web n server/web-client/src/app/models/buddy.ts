@@ -1,5 +1,5 @@
 export class Buddy {
-    // id: string;
+    id: string;
     name: string;
     address: string;
     postal_code: string;

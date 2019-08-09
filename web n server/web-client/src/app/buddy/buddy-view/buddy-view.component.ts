@@ -4,7 +4,8 @@ import { BuddyService } from '../buddy.service';
 import { Router } from '@angular/router';
 import io from 'socket.io-client';
 
-const socket = io('http://192.168.2.24:3000/');
+// const socket = io('http://192.168.2.24:3000/');
+const socket = io('http://localhost:3000/');
 
 @Component({
   selector: 'app-buddy-view',
