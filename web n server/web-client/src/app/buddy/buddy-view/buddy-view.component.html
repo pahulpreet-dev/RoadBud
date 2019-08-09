@@ -1,0 +1,32 @@
+<table width=100%>
+    <th>Buddy Name</th>
+    <th>Address</th>
+    <th>Postal Code</th>
+    <th>Phone</th>
+    <th>Service type</th>
+    <th></th>
+    <th></th>
+    <tr *ngFor="let buddy of buddies">
+        <td>
+            {{buddy.name}}
+        </td>
+        <td>
+            {{buddy.address}}
+        </td>
+        <td>
+            {{buddy.postal_code}}
+        </td>
+        <td>
+            {{buddy.phone}}
+        </td>
+        <td>
+            {{buddy.service_type}}
+        </td>
+        <td>
+            <!-- <a [routerLink]="['/courses', 'edit', buddy._id]">Edit</a> -->
+        </td>
+        <td class="text-center">
+            
+        </td>
+    </tr>
+</table>

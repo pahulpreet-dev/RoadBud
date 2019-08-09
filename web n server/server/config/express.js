@@ -15,6 +15,9 @@ const firebaseConfig = {
     messagingSenderId: "1039100366181"
 };
 firebase.initializeApp(firebaseConfig);
+
+var cors = require('cors')
+
 // Create a new Express application instance
 module.exports = function () {
     //Create the Express application object
@@ -27,6 +30,9 @@ module.exports = function () {
     } else if (process.env.NODE_ENV === 'production') {
         app.use(compress());
     }
+
+    app.use(cors())
+
     // Use the 'body-parser' and 'method-override' middleware functions
     app.use(bodyParser.urlencoded({
         extended: true
