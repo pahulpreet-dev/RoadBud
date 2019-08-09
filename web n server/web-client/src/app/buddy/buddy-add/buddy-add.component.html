@@ -1,37 +1,37 @@
 <div class="form">
-    <h1>Add New Course</h1>
+    <h1>Add New Buddy</h1>
     <form (ngSubmit)="createBuddy()" novalidate>
         <div>
-            <label for="courseCode">Course Code</label>
+            <label for="buddyName">Name</label>
             <div>
-                <input type="text" required [(ngModel)]="buddy.name" name="courseCode" placeholder="Name">
+                <input type="text" required [(ngModel)]="buddy.name" name="buddyName" placeholder="Name">
             </div>
         </div>
         <div>
-            <label for="courseName">Course Name</label>
+            <label for="buddyAddress">Course Name</label>
             <div>
-                <input type="text" required [(ngModel)]="buddy.address" name="courseName" placeholder="Address" />
+                <input type="text" required [(ngModel)]="buddy.address" name="buddyAddress" placeholder="Address" />
 
             </div>
         </div>
         <div>
-            <label for="section">Postal Code</label>
+            <label for="buddyPostalCode">Postal Code</label>
             <div>
-                <input type="section" required [(ngModel)]="buddy.postal_code" name="section" placeholder="Postal Code" />
+                <input type="text" required [(ngModel)]="buddy.postal_code" name="buddyPostalCode" placeholder="Postal Code" />
 
             </div>
         </div>
         <div>
-            <label for="phone">Phone</label>
+            <label for="buddyPhone">Phone</label>
             <div>
-                <input type="semester" required [(ngModel)]="buddy.phone" name="semester" placeholder="Phone" />
+                <input type="text" required [(ngModel)]="buddy.phone" name="buddyPhone" placeholder="Phone" />
 
             </div>
         </div>
         <div>
-            <label for="service-type">Service Type</label>
+            <label for="buddy-service-type">Service Type</label>
             <div>
-                <input type="semester" required [(ngModel)]="buddy.service_type" name="semester" placeholder="Service Type" />
+                <input type="text" required [(ngModel)]="buddy.service_type" name="buddy-service-type" placeholder="Service Type" />
 
             </div>
         </div>
