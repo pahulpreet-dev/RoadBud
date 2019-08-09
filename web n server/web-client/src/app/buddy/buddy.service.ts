@@ -44,4 +44,11 @@ export class BuddyService {
   editBuddy(buddy: Buddy): Observable<any> {
     return this.http.post<any>(this.host + 'api/buddy/edit/' + buddy.id, buddy, this.httpOptions);
   }
+
+  deleteBuddy(id: any): Observable<any> {
+    const data = {
+      temp: ''
+    };
+    return this.http.post<any>(this.host + 'api/buddy/delete/' + id, data, this.httpOptions);
+  }
 }

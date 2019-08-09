@@ -39,4 +39,14 @@ export class BuddyViewComponent implements OnInit {
     });
   }
 
+  onDeleteClick(id: any): void {
+    if (!confirm('Are you sure to delete?')) {
+      this.buddyService.deleteBuddy(id).subscribe( data => {
+        alert('Buddy deleted');
+        window.location.reload();
+      }, error => {
+        this.errorMessage = error;
+      });
+    }
+  }
 }

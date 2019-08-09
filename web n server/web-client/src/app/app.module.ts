@@ -9,6 +9,7 @@ import { BuddyComponent } from './buddy/buddy.component';
 import { BuddyViewComponent } from './buddy/buddy-view/buddy-view.component';
 import { BuddyAddComponent } from './buddy/buddy-add/buddy-add.component';
 import { BuddyEditComponent } from './buddy/buddy-edit/buddy-edit.component';
+import { BuddyDeleteComponent } from './buddy/buddy-delete/buddy-delete.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { BuddyEditComponent } from './buddy/buddy-edit/buddy-edit.component';
     BuddyViewComponent,
     BuddyAddComponent,
     BuddyEditComponent,
+    BuddyDeleteComponent,
   ],
   imports: [
     BrowserModule,
