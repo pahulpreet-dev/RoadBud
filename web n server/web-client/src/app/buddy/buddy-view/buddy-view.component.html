@@ -23,10 +23,10 @@
             {{buddy.service_type}}
         </td>
         <td>
-            <a [routerLink]="['/buddy', 'edit', buddy.id]">Edit</a>
+            <a [routerLink]="['/buddy', 'edit', buddy.service_type, buddy.id]">Edit</a>
         </td>
         <td class="text-center">
-                <a [routerLink]="['/buddy', 'delete', buddy.id]" (click)="onDeleteClick()">Delete</a>
+                <a [routerLink]="['/buddy', 'delete', buddy.service_type, buddy.id]" (click)="onDeleteClick()">Delete</a>
         </td>
     </tr>
 </table>

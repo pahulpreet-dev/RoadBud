@@ -10,17 +10,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class BuddyDeleteComponent implements OnInit {
 
-  buddyId: any;
+  buddy: Buddy;
   constructor(private buddyService: BuddyService,
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
-    this.buddyId = new Buddy().id;
+    this.buddy = new Buddy();
     this.activatedRoute.params.subscribe(params => {
-      this.buddyId = params.id;
+      this.buddy.service_type = params.service;
+      this.buddy.id = params.id;
     });
-    this.buddyService.deleteBuddy(this.buddyId).subscribe( res => {
+    this.buddyService.deleteBuddy(this.buddy).subscribe( res => {
       alert('Buddy Deleted');
       this.router.navigate(['/buddy/viewAll']);
     }, error => {

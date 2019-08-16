@@ -10,8 +10,8 @@ const routes: Routes = [
   {path: 'buddy', component: BuddyComponent},
   {path: 'buddy/add', component: BuddyAddComponent},
   {path: 'buddy/viewAll', component: BuddyViewComponent},
-  {path: 'buddy/edit/:id', component: BuddyEditComponent},
-  {path: 'buddy/delete/:id', component: BuddyDeleteComponent}
+  {path: 'buddy/edit/:service/:id', component: BuddyEditComponent},
+  {path: 'buddy/delete/:service/:id', component: BuddyDeleteComponent}
 ];
 
 @NgModule({

@@ -21,6 +21,7 @@ export class BuddyEditComponent implements OnInit {
   ngOnInit() {
     this.buddy = new Buddy();
     this.activatedRouter.params.subscribe(params => {
+      this.buddy.service_type = this.activatedRouter.snapshot.paramMap.get('service');
       this.buddy.id = this.activatedRouter.snapshot.paramMap.get('id');
     });
     this.getBuddyDetails();

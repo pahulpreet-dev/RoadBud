@@ -63,7 +63,8 @@ exports.create = function(req, res) {
 
 exports.getBuddyById = function (req, res) {
     const id = req.params.id;
-    const ref = firebaseDb.ref("/BuddyDb/" + id);
+    const service = req.params.service
+    const ref = firebaseDb.ref("/BuddyDb/" + service + "/" + id);
 
     ref.once("value").then(function(snapshot) {
         res.status(200).json(snapshot.val());
@@ -72,7 +73,8 @@ exports.getBuddyById = function (req, res) {
 
 exports.updateBuddyById = function (req, res) {
     const id = req.params.id;
-    const ref = firebaseDb.ref("/BuddyDb/" + id);
+    const service = req.params.service
+    const ref = firebaseDb.ref("/BuddyDb/" + service + "/" + id);
     ref.set({
         name: req.body.name,
         id: id,
@@ -91,7 +93,8 @@ exports.updateBuddyById = function (req, res) {
 
 exports.deleteBuddy = function (req, res) {
     const id = req.params.id;
-    const ref = firebaseDb.ref("/BuddyDb/" + id);
+    const service = req.params.service
+    const ref = firebaseDb.ref("/BuddyDb/" + service + "/" + id);
     ref.remove().then(function(error) {
         if(!error) {
             res.json("Deleted");

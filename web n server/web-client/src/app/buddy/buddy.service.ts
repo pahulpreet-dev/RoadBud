@@ -38,17 +38,14 @@ export class BuddyService {
 
   getBuddy(buddy: Buddy): Observable<any> {
     const data = JSON.stringify(buddy);
-    return this.http.post<any>(this.host + 'api/buddy/' + buddy.id, data, this.httpOptions);
+    return this.http.post<any>(this.host + 'api/buddy/' + buddy.service_type + '/' + buddy.id, data, this.httpOptions);
   }
    
   editBuddy(buddy: Buddy): Observable<any> {
-    return this.http.post<any>(this.host + 'api/buddy/edit/' + buddy.id, buddy, this.httpOptions);
+    return this.http.post<any>(this.host + 'api/buddy/edit/' + buddy.service_type + '/' + buddy.id, buddy, this.httpOptions);
   }
 
-  deleteBuddy(id: any): Observable<any> {
-    const data = {
-      temp: ''
-    };
-    return this.http.post<any>(this.host + 'api/buddy/delete/' + id, data, this.httpOptions);
+  deleteBuddy(buddy: Buddy): Observable<any> {
+    return this.http.post<any>(this.host + 'api/buddy/delete/' + buddy.service_type + '/' + buddy.id, buddy, this.httpOptions);
   }
 }
