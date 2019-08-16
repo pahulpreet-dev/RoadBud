@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Buddy } from '../../models/buddy';
 import { BuddyService } from '../buddy.service';
 import { Router } from '@angular/router';
 import io from 'socket.io-client';
 
-// const socket = io('http://192.168.2.24:3000/');
+// const socket = io('http://192.168.43.23:3000/');
 const socket = io('http://localhost:3000/');
-
 @Component({
   selector: 'app-buddy-view',
   templateUrl: './buddy-view.component.html',
@@ -18,7 +17,8 @@ export class BuddyViewComponent implements OnInit {
   errorMessage: any;
   
   constructor(private buddyService: BuddyService,
-    private router: Router) { }
+    private router: Router,
+    private ngZone: NgZone) { }
 
   ngOnInit() {
     this.buddies = new Array<Buddy>();
@@ -28,8 +28,15 @@ export class BuddyViewComponent implements OnInit {
     });
   }
   sockFunc(res: any) {
-    console.log(res);
-    alert('chal bar');
+    // alert('chal bar');
+    if (confirm('View updated list?')) {
+      if (this.router.url == '/buddy/viewAll') {
+        window.location.reload();
+      } else {
+        this.router.navigate(['/buddy/viewAll']);
+        this.ngZone.run(() => this.displayBuddyList());
+      }
+    }
   }
 
   displayBuddyList(): void {

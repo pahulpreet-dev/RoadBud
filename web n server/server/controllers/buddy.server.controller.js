@@ -7,28 +7,35 @@ exports.list = function(req, res) {
   controllerFlag++;
   fireRef.once("value").then(function(snapshot) {
     let jsonData = [];
-    snapshot.forEach(function(childSnapshot) {
-      jsonData.push(childSnapshot);
+    snapshot.forEach(function(serviceSnapshot) {
+      serviceSnapshot.forEach(function(childSnapshot){
+        jsonData.push(childSnapshot);
+      }) 
     });
     res.status(200).json(jsonData);
     newItemFlag = true;
   });
-  if(controllerFlag < 2) 
-  {
-    firebaseDb.ref('/BuddyDb').on("child_added", function(snapshot) {
-      if(newItemFlag) {
-        const io = req.app.io;
-        io.on('connection', function (socket) {
-        });
-        io.emit('chak', 'emitted chal bar')
-        console.log(snapshot.val());
-      }
-     });
-  }
+  // if(controllerFlag < 2) 
+  // {
+  //   firebaseDb.ref('/BuddyDb').on("value", function(snapshot) {
+  //     if(newItemFlag) {
+  //       snapshot.forEach(function(childSnapshot) {
+  //         fireRef.child(childSnapshot.key).on("child_added", function(up) {
+  //           const io = req.app.io;
+  //           io.on('connection', function (socket) {
+  //           });
+  //           io.emit('chak', 'emitted chal bar')
+  //           console.log(childSnapshot.val());
+  //         })
+  //       })
+  //     }
+  //    });
+  // }
 };
 
 exports.create = function(req, res) {
-  fireRef.push().set(
+  const serviceRef = fireRef.child(req.body.service_type);
+  serviceRef.push().set(
     {
       name: req.body.name,
       address: req.body.address,
@@ -38,10 +45,10 @@ exports.create = function(req, res) {
     },
     function(error) {
       if (!error) {
-        fireRef.limitToLast(1).once("value").then(function(snapshot) {
+        serviceRef.limitToLast(1).once("value").then(function(snapshot) {
           snapshot.forEach(function(childSnapshot) {
             const id = childSnapshot.key;
-            firebaseDb.ref("/BuddyDb/" + id).update({
+            fireRef.child(req.body.service_type +  "/" + id).update({
               id: id
             });
           });

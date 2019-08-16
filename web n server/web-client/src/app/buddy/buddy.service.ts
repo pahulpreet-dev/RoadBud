@@ -15,7 +15,7 @@ export class BuddyService {
       'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
     })
   };
-  // private host = 'http://192.168.2.24:3000/';
+  // private host = 'http://192.168.43.23:3000/';
   private host = 'http://localhost:3000/';
 
   constructor(private http: HttpClient) { }
@@ -40,7 +40,7 @@ export class BuddyService {
     const data = JSON.stringify(buddy);
     return this.http.post<any>(this.host + 'api/buddy/' + buddy.id, data, this.httpOptions);
   }
-  
+   
   editBuddy(buddy: Buddy): Observable<any> {
     return this.http.post<any>(this.host + 'api/buddy/edit/' + buddy.id, buddy, this.httpOptions);
   }

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RoadBud</string>
+    <string name="text_location_permission">To serve you better,
+        we need to access your location to provide Road Buddies near you.
+        You can always change your permissions in app settings.
+    </string>
+    <string name="ok">Ok</string>
+    <string name="open_app_setting">Settings</string>
+    <string name="deny">Deny</string>
+</resources>
